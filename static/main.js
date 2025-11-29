@@ -88,7 +88,7 @@ async function runWasmInference() {
     const latency = (endTime - startTime).toFixed(2);
 
     // 最大値(argmax)を探す
-    let maxProb = -1;
+    let maxProb = -Infinity;
     let maxId = -1;
     for(let i=0; i<output.length; i++){
         if(output[i] > maxProb){
@@ -97,12 +97,20 @@ async function runWasmInference() {
         }
     }
 
-    // Softmax簡易計算(デモ用)
-    // 厳密にはここで行うが、スコア比較だけで十分なら省略可
+    // 出力は多くの場合ロジットなので softmax を計算して確率を表示する
+    function softmax(arr){
+        const max = Math.max(...arr);
+        const exps = arr.map(v => Math.exp(v - max));
+        const sum = exps.reduce((a,b) => a + b, 0);
+        return exps.map(e => e / sum);
+    }
+
+    const probs = softmax(Array.from(output));
+    const topProb = probs[maxId];
 
     uiRes.innerHTML = `
         ID: ${maxId}<br>
-        Score: ${maxProb.toFixed(4)}<br>
+        Prob: ${topProb.toFixed(4)}<br>
         <div class="latency">Latency: ${latency} ms</div>
         <small>(Network: 0 ms)</small>
     `;

@@ -1,18 +1,58 @@
-venv/
 __pycache__/
-*.pyc
-app.pyのtransformsに変更をくわえました
+*.py[cod]
+*$py.class
 
-Server API
-ID: 417
-Prob: 0.1344
-Total Latency: 472.60 ms
-(Net: 62.93ms + Inf: 409.67ms)
+# Virtual environment
+venv/
 
- Client Edge (WASM)
-ID: 530
-Score: 7.7034
-Latency: 225.50 ms
-(Network: 0 ms)
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
 
-という結果でした．この結果を評価してください．ただし，現在onnxモデルの量子化には失敗しています．
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE/editor directories
+.vscode/
+.idea/
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model artifacts: ignore intermediate/backups or external-data files
+# Keep canonical model files (e.g. resnet18.onnx) in repo if you want reproducible runs.
+models/*.onnx.data
+models/*_old.onnx
+models/*_reexport.onnx
+models/*_traced.onnx
+
+# Local secrets / env
+.env
+env/
+
+# Node / JS
+node_modules/
+
+# Other
+*.bak
+*.swp
+
+# End of .gitignore
