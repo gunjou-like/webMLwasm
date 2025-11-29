@@ -1,0 +1,160 @@
+/* 基本設定 */
+:root {
+    --primary-color: #2563eb;    /* Server: Blue */
+    --accent-color: #7c3aed;     /* Client: Purple */
+    --success-color: #059669;    /* Success: Green */
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+p {
+    color: var(--text-sub);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* 画像アップロードエリア */
+#uploadInput {
+    padding: 10px;
+    background: #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#preview {
+    max-width: 100%;
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+}
+
+/* メインコンテナ */
+.container {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 900px;
+    justify-content: center;
+    flex-wrap: wrap; /* モバイル対応 */
+}
+
+/* カードスタイル */
+.box {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 25px;
+    flex: 1;
+    min-width: 300px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    border-top: 5px solid transparent;
+}
+
+/* サーバー側の固有スタイル */
+.box:nth-child(1) {
+    border-top-color: var(--primary-color);
+}
+.box:nth-child(1) h3 {
+    color: var(--primary-color);
+}
+
+/* クライアント側の固有スタイル */
+.box:nth-child(2) {
+    border-top-color: var(--accent-color);
+}
+.box:nth-child(2) h3 {
+    color: var(--accent-color);
+}
+
+.box h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ボタン */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-bottom: 15px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.box:nth-child(1) button {
+    background-color: var(--primary-color);
+}
+
+.box:nth-child(2) button {
+    background-color: var(--accent-color);
+}
+
+/* 結果表示エリア */
+.result {
+    background-color: #f1f5f9;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    min-height: 120px;
+}
+
+/* Latencyの強調表示 */
+.latency {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ef4444; /* 赤色で強調 */
+    margin: 10px 0;
+    padding: 5px 0;
+    border-bottom: 1px dashed #cbd5e1;
+}
+
+/* クライアント側のLatencyは緑にする（速いイメージ） */
+.box:nth-child(2) .latency {
+    color: var(--success-color);
+}
+
+small {
+    color: var(--text-sub);
+    display: block;
+    margin-top: 5px;
+}

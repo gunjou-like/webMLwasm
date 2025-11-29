@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Web ML Demo: Server vs Edge</title>
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .container { display: flex; gap: 20px; }
+        .box { border: 1px solid #ccc; padding: 20px; flex: 1; border-radius: 8px; }
+        .result { font-weight: bold; margin-top: 10px; color: #333; }
+        .latency { color: #d00; font-size: 1.2em; }
+        img { max-width: 100%; height: auto; margin-bottom: 10px; }
+        button { padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Web ML Speed Showdown ⚡️</h1>
+    <p>Server-side Python vs Client-side WASM</p>
+
+    <input type="file" id="uploadInput" accept="image/*">
+    <br><br>
+    <img id="preview" src="" style="display:none; max-height: 300px;">
+
+    <div class="container" id="controlPanel" style="display:none;">
+        <div class="box">
+            <h3>🐍 Server API (Python)</h3>
+            <button onclick="runServerInference()">Run Request</button>
+            <div id="serverResult" class="result"></div>
+        </div>
+
+        <div class="box">
+            <h3>🚀 Client Edge (WASM)</h3>
+            <button onclick="runWasmInference()">Run Local</button>
+            <div id="wasmResult" class="result">
+                <small>モデルロード中...</small>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

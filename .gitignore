@@ -1,0 +1,18 @@
+venv/
+__pycache__/
+*.pyc
+app.pyのtransformsに変更をくわえました
+
+Server API
+ID: 417
+Prob: 0.1344
+Total Latency: 472.60 ms
+(Net: 62.93ms + Inf: 409.67ms)
+
+ Client Edge (WASM)
+ID: 530
+Score: 7.7034
+Latency: 225.50 ms
+(Network: 0 ms)
+
+という結果でした．この結果を評価してください．ただし，現在onnxモデルの量子化には失敗しています．
