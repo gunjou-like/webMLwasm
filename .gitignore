@@ -55,4 +55,9 @@ node_modules/
 *.bak
 *.swp
 
+
+# test scripts
+scripts/check_model_browser.py
+
+
 # End of .gitignore
