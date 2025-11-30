@@ -2,7 +2,9 @@
 
 軽量なデモプロジェクト：サーバー（PyTorch/FastAPI）とクライアント（ONNX Runtime Web / WASM）で同じ画像分類モデル（ResNet18）を比較するためのサンプルです。
 
-目的
+![実行画面](images\image1.png)
+
+# 目的
 - サーバーサイド推論（Python + PyTorch）とクライアントサイド推論（ブラウザ上の ONNX Runtime Web / WASM）を比較して、レイテンシの差を示すデモ。
 
 リポジトリ構成（重要なファイル）
@@ -16,7 +18,7 @@
 - `requirements.txt` - Python 依存（開発環境用）
 - `docs/ONNX_Export_Fix.md` - PyTorch↔ONNX の出力不一致を解消した手順の詳細ドキュメント。
 
-セットアップ（Windows のコマンド例）
+# セットアップ（Windows のコマンド例）
 
 1. 仮想環境の作成・有効化
 
@@ -76,13 +78,13 @@ Copy-Item models\resnet18_traced.onnx models\resnet18.quant.onnx -Force
 
 このスクリプトは PyTorch と ONNX の入力テンソル統計、logits の差分、top-1/top-5 を比較してデバッグ出力を表示します。
 
-注意事項 / 既知の問題
+# 注意事項 / 既知の問題
 
 - ONNX 量子化 (`onnxruntime.quantization.quantize_dynamic`) は PyTorch 2.x の出力（外部データ形式など）で shape inference エラーを起こすことがありました。詳細は `docs/ONNX_Export_Fix.md` を参照してください。
 - 本プロジェクトでは最終的に `torch.jit.trace` + レガシーエクスポーターを使って ONNX を生成し、PyTorch と ONNX の出力を一致させました。
 - ブラウザは大きなモデルファイルをキャッシュするため、モデルを差し替えた後はブラウザのハードリロード（`Ctrl+Shift+R`）や DevTools の `Disable cache` を使用してモデル再取得を行ってください。
 
-評価・改善案
+# 評価・改善案
 
 - 単一画像の top-1 確率が低い（例: 0.13）ことは必ずしも性能が低いことを意味しません。ImageNet の 1000 クラス分類では確率が分散しやすいです。複数画像で top-1 / top-5 を計測することを推奨します（`scripts` にある評価スクリプトを利用してください）。
 - 量子化が必要なら `onnx-simplifier` を試したり、PyTorch 側で量子化した上でエクスポートする方法を検討できます。ただし、現状では量子化は必須ではありません（動作・比較は可能）。
