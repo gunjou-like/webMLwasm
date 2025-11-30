@@ -2,7 +2,7 @@
 
 軽量なデモプロジェクト：サーバー（PyTorch/FastAPI）とクライアント（ONNX Runtime Web / WASM）で同じ画像分類モデル（ResNet18）を比較するためのサンプルです。
 
-![実行画面](images\image1.png)
+![実行画面](images/image1.png)
 
 # 目的
 - サーバーサイド推論（Python + PyTorch）とクライアントサイド推論（ブラウザ上の ONNX Runtime Web / WASM）を比較して、レイテンシの差を示すデモ。
